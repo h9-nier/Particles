@@ -1,6 +1,6 @@
 const PARTICLE_SIZE = 2;
-const MAX_PARTICLE_SPEED = 1;
-const MAX_PARTICLES = 10;
+const MAX_PARTICLE_SPEED = 0.2;
+const PARTICLE_BRIDGE_DISTANCE = 120;
 
 const canvasElement = document.getElementById("particles");
 const ctx = canvasElement.getContext("2d");
@@ -65,8 +65,8 @@ function draw() {
       const otherParticle = particles[i];
       const distance = calculateDistance(particle, otherParticle);
 
-      if (distance < 50) {
-        const opacity = 1 - distance / 50; // Calculate opacity based on distance
+      if (distance < PARTICLE_BRIDGE_DISTANCE) {
+        const opacity = 1 - distance / PARTICLE_BRIDGE_DISTANCE; // Calculate opacity based on distance
         const gradient = ctx.createLinearGradient(
           particle.x,
           particle.y,
@@ -93,15 +93,6 @@ function randomNumber(min, max) {
   return Math.random() * (max - min) + min;
 }
 
-// Setup
-adjustCanvasSize();
-window.addEventListener("resize", adjustCanvasSize);
-
-// Initiate
-setInterval(updatePositions, 1);
-draw();
-
-// Draw randomized particles
 function initializeParticles() {
   for (let i = 0; i < 100; i++) {
     newParticle(
@@ -110,8 +101,19 @@ function initializeParticles() {
     );
   }
 }
+
+// Setup
+adjustCanvasSize();
+window.addEventListener("resize", adjustCanvasSize);
+
+// Initiate
+setInterval(updatePositions, 1);
+draw();
+
+// Draw randomized particles on page load
 initializeParticles();
 
+// Draw new particle on cannvas click
 canvasElement.addEventListener("click", (event) => {
   const [mouseX, mouseY] = getMousePositionRelativeTo(event, canvasElement);
   let particle = newParticle(mouseX, mouseY);
