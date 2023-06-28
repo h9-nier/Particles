@@ -26,7 +26,7 @@ function newParticle(x, y) {
     return { x, y, velocityX, velocityY };
 }
 
-function drawParticle({ x, y, velocityX, velocityY }) {
+function drawParticle({ x, y }) {
     ctx.fillStyle = "#fff";
     ctx.beginPath();
     ctx.arc(x, y, PARTICLE_SIZE, 0, 2 * Math.PI);
