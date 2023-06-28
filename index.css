@@ -1,0 +1,14 @@
+* {
+    text-decoration: none;
+    margin: 0;
+}
+
+.outline {
+    outline: 1px solid red;
+}
+
+.particles-container {
+    width: 100%;
+    height: 100vh;
+}
+
