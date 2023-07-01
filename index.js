@@ -2,9 +2,9 @@ const PARTICLE_SIZE = 2;
 const MAX_PARTICLE_SPEED = 0.2;
 const PARTICLE_BRIDGE_DISTANCE = 120;
 const PARTICLE_COLOR = {
-  r: 216,
-  g: 30,
-  b: 91,
+  r: 249,
+  g: 283,
+  b: 16,
 };
 let MAX_PARTICLE_NUMBER;
 
@@ -69,10 +69,7 @@ function draw() {
   ctx.clearRect(0, 0, canvasElement.width, canvasElement.height);
 
   particles.forEach((particle, index) => {
-    if (
-      particle.x >= canvasElement.width ||
-      particle.y >= canvasElement.height
-    ) {
+    if (particle.x > canvasElement.width || particle.y > canvasElement.height) {
       particles.splice(index, 1);
       return;
     }
