@@ -8,3 +8,6 @@
     height: 100vh;
 }
 
+#particles {
+    background-image: linear-gradient( #FCFAFA, #C8D3D5, #A4B8C4);
+}

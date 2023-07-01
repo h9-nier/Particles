@@ -1,6 +1,11 @@
 const PARTICLE_SIZE = 2;
 const MAX_PARTICLE_SPEED = 0.2;
 const PARTICLE_BRIDGE_DISTANCE = 120;
+const PARTICLE_COLOR = {
+  r: 216,
+  g: 30,
+  b: 91,
+};
 let MAX_PARTICLE_NUMBER;
 
 const canvasElement = document.getElementById("particles");
@@ -29,7 +34,7 @@ function newParticle(x, y) {
 }
 
 function drawParticle({ x, y }) {
-  ctx.fillStyle = "#fff";
+  ctx.fillStyle = `rgb(${PARTICLE_COLOR.r}, ${PARTICLE_COLOR.g}, ${PARTICLE_COLOR.b})`;
   ctx.beginPath();
   ctx.arc(x, y, PARTICLE_SIZE, 0, 2 * Math.PI);
   ctx.fill();
@@ -85,8 +90,14 @@ function draw() {
           otherParticle.x,
           otherParticle.y
         );
-        gradient.addColorStop(0, `rgba(255, 255, 255, ${opacity})`);
-        gradient.addColorStop(1, `rgba(255, 255, 255, ${opacity})`);
+        gradient.addColorStop(
+          0,
+          `rgba(${PARTICLE_COLOR.r}, ${PARTICLE_COLOR.g}, ${PARTICLE_COLOR.b}, ${opacity})`
+        );
+        gradient.addColorStop(
+          1,
+          `rgba(${PARTICLE_COLOR.r}, ${PARTICLE_COLOR.g}, ${PARTICLE_COLOR.b}, ${opacity})`
+        );
 
         ctx.strokeStyle = gradient;
         ctx.beginPath();
